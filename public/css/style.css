@@ -1,0 +1,47 @@
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #f7941d;
+    border-color: #f7941d;
+}
+.navbar-toggler.nav-button,
+.tag-cloud li a:hover,
+.pager li.is-active a,
+.pager li.pager__item.is-active > a,
+.pager li > a:hover,
+#page-title.title-colored-bg,
+.panel-heading.colored .panel-title > a,
+.panel-heading.colored .panel-title > a.collapsed:hover,
+.panel-heading.colored .panel-title > a:hover,
+.panel-heading.colored .panel-title > a.collapsed,
+.colored-bg,
+.btn-primary,
+input[type="submit"],
+.search-content input[type="submit"],
+.product-layout3 .product-teaser .product-add-cart input[type="submit"],
+.product-layout4 .product-teaser .product-add-cart:hover .cart-link-icon,
+.product-layout5 .product-teaser .product-add-cart:hover,
+.preloader-spinner,
+.colored-footer .footer-widget,
+.colored-footer .footer-bottom,
+.icon-effect-1 .icon-x:hover,
+.icon-effect-2 .icon-x:hover,
+.progress-bar-wrap,
+.sidenav.sidenav-colored,
+.button-cta,
+.cart-block-link a,
+.product-featured-text,
+.product-category-name:before,
+.product-category-name:after,
+.product-category:hover .product-category-name,
+.product-flag-icon .action-unflag i,
+.product-flag-icon i:hover,
+.grid-menu-item .menu-price-amount,
+.pricing-table .featured .button,
+.contact-social.social-media ul li a {
+    background-color: #f7941d;
+}
+.btn,
+input[type="submit"] {
+    background-color: #f7941d;
+}
