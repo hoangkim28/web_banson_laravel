@@ -57,7 +57,7 @@
                                                 </div>
                                                 <div class="js-form-item form-item js-form-type-select form-item-tid1 js-form-item-tid1 form-no-label">
                                                     <select data-drupal-selector="edit-tid1" id="edit-tid1" name="thuong-hieu" class="form-select select2-hidden-accessible" data-select2-id="edit-tid1" tabindex="-1" aria-hidden="true">
-                                                        $allBrand
+                                                        
                                                         <option value="" selected="selected" data-select2-id="4">Thương hiệu</option>
                                                         @foreach($Brand as $brand)
                                                             <option value="{{$brand->slug}}">{{$brand->name}}</option>

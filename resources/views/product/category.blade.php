@@ -85,10 +85,6 @@
                                                                 class="form-select select2-hidden-accessible"
                                                                 data-select2-id="edit-tid1" tabindex="-1"
                                                                 aria-hidden="true">
-                                                            $allBrand
-                                                            <option value="All" selected="selected" data-select2-id="4">
-                                                                Thương hiệu
-                                                            </option>
                                                             @foreach($Brand as $brand)
                                                                 <option value="{{$brand->slug}}">{{$brand->name}}</option>
                                                             @endforeach
