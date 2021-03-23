@@ -39,7 +39,7 @@ class RegisterNotify extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)->view(
-            'notify.mail.register'
+            'notify.register'
         );
     }
 

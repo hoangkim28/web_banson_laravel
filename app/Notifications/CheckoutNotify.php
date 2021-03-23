@@ -46,7 +46,7 @@ class CheckoutNotify extends Notification
         $billDetail = OrderDetail::where('order_id', '=', $orderId)->get();
         return (new MailMessage)
             ->subject('Thành Tánh - Theo dõi đơn hàng')
-            ->view('notify.mail.order', ['bill' => $bill, 'billDetail' => $billDetail]);
+            ->view('notify.order', ['bill' => $bill, 'billDetail' => $billDetail]);
     }
 
     /**
