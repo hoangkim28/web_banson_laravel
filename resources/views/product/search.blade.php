@@ -78,6 +78,9 @@
                                 <hr>
                                 {{$data->appends(['sort' => 'asc'])->links()}}
                                 <div class="item-list" style="padding-top: 5vh;">
+                                @if($notfound)
+                                <p class="alert alert-success">Từ khóa rỗng, nhưng chúng tôi gợi ý cho bạn danh sách bên dưới.</p>
+                                @endif
                                     <ul>
                                         @foreach($data as $item)
                                             <li>
@@ -106,7 +109,7 @@
                                 @else
                                 <br>
                                 <br><br>
-                                    <p class="display-3 label-info">Không tìm thấy!</p>                                        
+                                    <p class="alert alert-danger">Không tìm thấy!</p>                                        
                                 @endif
                                 <hr>
                             {{$data->appends(['sort' => $sort ?? 'asc'])->links()}}

@@ -6,8 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Actions\\Order\\OrderConfirmAction' => $baseDir . '/app/Actions/Order/OrderConfirmAction.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\Admin\\BillController' => $baseDir . '/app/Http/Controllers/Admin/BillController.php',
     'App\\Http\\Controllers\\Admin\\OrderController' => $baseDir . '/app/Http/Controllers/Admin/OrderController.php',
     'App\\Http\\Controllers\\Admin\\ProductController' => $baseDir . '/app/Http/Controllers/Admin/ProductController.php',
     'App\\Http\\Controllers\\Admin\\VoyagerAuthController' => $baseDir . '/app/Http/Controllers/Admin/VoyagerAuthController.php',
@@ -48,6 +50,7 @@ return array(
     'App\\Models\\AttributeValue' => $baseDir . '/app/Models/AttributeValue.php',
     'App\\Models\\AttributeValueProductAttribute' => $baseDir . '/app/Models/AttributeValueProductAttribute.php',
     'App\\Models\\Bill' => $baseDir . '/app/Models/Bill.php',
+    'App\\Models\\BillDetail' => $baseDir . '/app/Models/BillDetail.php',
     'App\\Models\\Brand' => $baseDir . '/app/Models/Brand.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Customer' => $baseDir . '/app/Models/Customer.php',
@@ -58,6 +61,10 @@ return array(
     'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',
     'App\\Models\\ProductAttribute' => $baseDir . '/app/Models/ProductAttribute.php',
     'App\\Models\\ShippingStatus' => $baseDir . '/app/Models/ShippingStatus.php',
+    'App\\Notifications\\CheckoutNotify' => $baseDir . '/app/Notifications/CheckoutNotify.php',
+    'App\\Notifications\\LoginNotify' => $baseDir . '/app/Notifications/LoginNotify.php',
+    'App\\Notifications\\OrderNotify' => $baseDir . '/app/Notifications/OrderNotify.php',
+    'App\\Notifications\\RegisterNotify' => $baseDir . '/app/Notifications/RegisterNotify.php',
     'App\\Policies\\BasePolicy' => $baseDir . '/app/Policies/BasePolicy.php',
     'App\\Policies\\ProductPolicy' => $baseDir . '/app/Policies/ProductPolicy.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
@@ -69,6 +76,7 @@ return array(
     'App\\User' => $baseDir . '/app/User.php',
     'App\\Widgets\\BaseDimmer' => $baseDir . '/app/Widgets/BaseDimmer.php',
     'App\\Widgets\\OrderDimmer' => $baseDir . '/app/Widgets/OrderDimmer.php',
+    'App\\Widgets\\RevenueDimmer' => $baseDir . '/app/Widgets/RevenueDimmer.php',
     'App\\Widgets\\UserDimmer' => $baseDir . '/app/Widgets/UserDimmer.php',
     'Arrilot\\Widgets\\AbstractWidget' => $vendorDir . '/arrilot/laravel-widgets/src/AbstractWidget.php',
     'Arrilot\\Widgets\\AsyncFacade' => $vendorDir . '/arrilot/laravel-widgets/src/AsyncFacade.php',

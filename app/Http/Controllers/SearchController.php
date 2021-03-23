@@ -18,28 +18,30 @@ class SearchController extends Controller
         $pageSize = 9;
         $sort = 'asc';
         $q = '';
-        if (request()->has('tu-khoa')) {
-            $q = request('tu-khoa');
-            $data->where('name', 'LIKE', '%'.$q.'%')
-            ->orWhere('sku', 'LIKE', '%'.$q.'%')
-            ->orWhere('seo_title', 'LIKE', '%'.$q.'%')
-            ->orWhere('excerpt', 'LIKE', '%'.$q.'%')
-            ->orWhere('body', 'LIKE', '%'.$q.'%')
-            ->orWhere('slug', 'LIKE', '%'.$q.'%')
-            ->orWhere('meta_keywords', 'LIKE', '%'.$q.'%');
-        }
 
         if (request()->has('danh-muc') && request('danh-muc')!=null && request('danh-muc')!='All') {
-            $name = request('danh-muc');
+            $name = $request['danh-muc'];
             $cateID = Category::where('slug', '=', $name)->value('id');
-
-            $data = $data->where('category_id', '=', $cateID);
+            $cate_list = $data->where('category_id', '=', $cateID);
+            if($cate_list->get()->count())
+            dd($cate_list->get());
+            $data = $cate_list;
         }
 
         if (request()->has('thuong-hieu') && request('thuong-hieu')!=null && request('thuong-hieu')!='All') {
-            $name = request('thuong-hieu');
+            $name = $request['thuong-hieu'];
             $brandId = Brand::where('name', '=', $name)->value('id');
             $data = $data->where('brand_id', '=', $brandId);
+        }
+
+        
+        if ($request['tu-khoa']!="") {
+            $q = $request['tu-khoa'];
+            $data->where('name', 'LIKE', '%'.$q.'%')
+            ->orWhere('sku', 'LIKE', '%'.$q.'%');
+        }else {
+            $data->take(9)->inRandomOrder()->get();
+            $notfound = true;
         }
 
         if (request()->has('sort')) {
@@ -55,6 +57,6 @@ class SearchController extends Controller
 
         $data = $data->paginate($pageSize)->appends($queries);
         $data_cate = Category::all();
-        return view('product.search', ['data' => $data,'sap-xep'=>$sapxep,'sort'=>$sort,'keyword'=>$q,'title'=>$title,'data_cate'=>$data_cate]);
+        return view('product.search', ['notfound'=> $notfound, 'data' => $data,'sap-xep'=>$sapxep,'sort'=>$sort,'keyword'=>$q,'title'=>$title,'data_cate'=>$data_cate]);
     }
 }
