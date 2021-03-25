@@ -68,6 +68,7 @@
                             <div class="date">Ngày đặt: {{ \Carbon\Carbon::parse($order->create_at)->format('d/m/Y H:i')}}
                             </div>
                             <div class="date">Ngày xác nhận đơn: {{ \Carbon\Carbon::parse($order->update_at)->format('d/m/Y H:i')}}</div>
+                            <div>Trạng thái đơn hàng: {{$order->order_status()->first()->name}}</div>
                         </div>
                     </div>
                     <table border="0" cellspacing="0" cellpadding="0">
