@@ -14,8 +14,6 @@ namespace Composer\Downloader;
 
 use Composer\Package\PackageInterface;
 use Symfony\Component\Finder\Finder;
-use Composer\IO\IOInterface;
-use Composer\Exception\IrrecoverableDownloadException;
 use React\Promise\PromiseInterface;
 use Composer\DependencyResolver\Operation\InstallOperation;
 
@@ -28,11 +26,6 @@ use Composer\DependencyResolver\Operation\InstallOperation;
  */
 abstract class ArchiveDownloader extends FileDownloader
 {
-    public function download(PackageInterface $package, $path, PackageInterface $prevPackage = null, $output = true)
-    {
-        return parent::download($package, $path, $prevPackage, $output);
-    }
-
     /**
      * {@inheritDoc}
      * @throws \RuntimeException
@@ -162,8 +155,8 @@ abstract class ArchiveDownloader extends FileDownloader
      * @param string $file Extracted file
      * @param string $path Directory
      *
-     * @return PromiseInterface|null
      * @throws \UnexpectedValueException If can not extract downloaded file to path
+     * @return PromiseInterface|null
      */
     abstract protected function extract(PackageInterface $package, $file, $path);
 }
