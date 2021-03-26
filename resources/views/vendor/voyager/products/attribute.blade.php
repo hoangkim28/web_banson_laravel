@@ -40,7 +40,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($productAttributes as $pa)
-                                    <tr title="Nhấn để cập nhật..." class="tr-attribute" data-id="{{$pa->id}}">
+                                    <tr title="Nhấn để cập nhật..." class="tr-attribute" data-id="{{$pa->id}}" @if($pa->default==0) style="background-color:#F9FAFB" @endif>
                                             <td>
                                                 <ul class="list-unstyled">
                                                     @foreach($pa->attributesValues as $item)
@@ -134,8 +134,8 @@
                     <div class="form-group">
                         <label for="default">Đặt mặc định?</label> <br/>
                         <select name="default" id="default" class="form-control select2">
-                            <option value="0" selected="selected">Không</option>
-                            <option value="1">Có</option>
+                            <option value="1" selected="selected">Không</option>
+                            <option value="0">Có</option>
                         </select>
                     </div>
                     <div class="box-footer text-center">

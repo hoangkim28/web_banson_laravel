@@ -105,7 +105,7 @@ class Product extends Model
 
     public function default_price()
     {
-        $attrbute = ProductAttribute::where('product_id', '=', $this->id)->where('default', '=', 1)->first();
+        $attrbute = ProductAttribute::where('product_id', '=', $this->id)->where('default', '=', 0)->first();
         return $attrbute->sale_price ? $attrbute->price : $attrbute->sale_price;
     }
 
