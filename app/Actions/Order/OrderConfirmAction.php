@@ -25,7 +25,7 @@ class OrderConfirmAction extends AbstractAction {
         $order = \App\Models\Order::where('id','=',$this->data->id)->first();
         if($order->order_status != 4)
         {
-            $style = "block";
+            $style = "block ;margin-right:5px !important;";
         }
         return [
             'class' => 'btn btn-sm btn-success pull-right confirm',
