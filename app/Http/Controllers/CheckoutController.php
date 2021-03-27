@@ -24,7 +24,7 @@ class CheckoutController extends Controller
             return View('checkout')->with('title', $title);
         } else {
             // dd($title);
-            return redirect()->route('login')->with('messages', 'Vui lòng đăng nhập!');
+            return redirect()->route('login')->with('messages', 'Vui lòng đăng nhập để đặt hàng!');
         }
     }
 
@@ -35,8 +35,10 @@ class CheckoutController extends Controller
 
     public function store(CheckoutRequest $req)
     {
+        $validated = $req->validated();
+
         if (!\Auth::user()) {
-            return redirect()->route('login')->with('messages', 'Vui lòng đăng nhập!');
+            return redirect()->route('login')->with('messages', 'Vui lòng đăng nhập để đặt hàng!');
         }
 
         if (\Cart::count()) {
@@ -50,12 +52,12 @@ class CheckoutController extends Controller
 
                 $nofity = $user->notify(new OrderNotify($orderData, $orderDetailData));
                 \Cart::destroy();
-                return redirect()->route('home')->with('messages', 'Thành công!')->with('type', 'success');
+                return $this->success();
             } else {
                 return redirect()->route('cart.index')->with('messages', 'Có lỗi xảy ra!')->with('type', 'danger');
             }
         } else {
-            return redirect()->route('cart')->with('messages', 'Giỏ hàng trống')->with('type', 'danger');
+            return redirect()->route('cart.index')->with('messages', 'Giỏ hàng trống')->with('type', 'danger');
         }
     }
 

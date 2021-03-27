@@ -70,3 +70,5 @@ Route::group(['prefix' => '/'], function () {
 
     Route::get('{slug}', 'ProductController@product_cate')->name('product.cate');
 });
+
+Route::get('/success', 'CheckoutController@success')->name('checkout.success');

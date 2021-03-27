@@ -28,18 +28,18 @@ class CheckoutRequest extends FormRequest
             'email' => $emailValidation,
             'name' => 'required|max:255|min:3',
             'address1' => 'required',
-            'phone' => 'required|max:11|min:3',
+            'phone' => 'required|max:11|min:9',
         ];
     }
 
     public function messages() {
         return [
-            'address1.required' => "Vui lòng cung cấp địa chỉ nhận hàng",
-            'name.required' => "Vui lòng cung cấp họ tên",
-            'email.required' => "Vui lòng nhập địa chỉ email",
-            'phone.required' => "Vui lòng cung cấp số điện thoại liên lạc",
-            'phone.max' => "Vui lòng nhập đúng số điện thoại",
-            'phone.min' => "Vui lòng nhập đúng số điện thoại",
+            'address1.required' => "Vui lòng cung cấp địa chỉ nhận hàng!",
+            'name.required' => "Vui lòng cung cấp họ tên!",
+            'email.required' => "Vui lòng nhập địa chỉ email!",
+            'phone.required' => "Vui lòng cung cấp số điện thoại liên lạc!",
+            'phone.max' => "Số điện thoại không đúng!",
+            'phone.min' => "Số điện thoại không đúng!",
         ];
     }
 }
