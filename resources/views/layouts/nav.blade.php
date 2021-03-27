@@ -1,10 +1,10 @@
-@style
+@section('styles')
 <style>
 .nip-header .region-language .language-switcher-language-url {
   min-width: 200px;
 }
 </style>
-@endstyle
+@stop
 <header class="header nip-header affix">
   <div class=" nip-header__topbar" style>
     <div class="region region-top-bar">
