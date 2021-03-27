@@ -32,4 +32,16 @@ class DeleteAction extends AbstractAction
     {
         return 'javascript:;';
     }
+    
+    // Disable Delete action 
+    public function shouldActionDisplayOnDataType() {
+      
+      if($this->dataType->slug === 'orders' || $this->dataType->slug === 'bills'){
+        return false;
+      }
+      else{
+        return true;
+      }
+
+    }
 }

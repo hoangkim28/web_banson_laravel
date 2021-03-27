@@ -30,4 +30,16 @@ class EditAction extends AbstractAction
     {
         return route('voyager.'.$this->dataType->slug.'.edit', $this->data->{$this->data->getKeyName()});
     }
+
+    // Disable Delete action 
+    public function shouldActionDisplayOnDataType() {
+      
+      if($this->dataType->slug === 'orders' || $this->dataType->slug === 'bills'){
+        return false;
+      }
+      else{
+        return true;
+      }
+
+    }
 }
