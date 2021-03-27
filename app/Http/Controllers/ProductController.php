@@ -33,16 +33,7 @@ class ProductController extends Controller
         $parent = false;
         $cate_data = Category::where('slug','=',$slug)->first();
         $title = $cate_data->name;
-        $data = Product::where('category_id','=',$cate_data->id)->with('brand')->where('date_available', '<=', $date_now)->orderby('updated_at', 'DESC')->GET();
-        if($slug == 'son-noi-that' || $slug == 'son-ngoai-that')
-        {            
-            // $data  = Category::whereParentId(1)->with('children.products')->get();
-            $category = Category::with(['products', 'subproducts'])->where('slug', $slug)->first();
-
-            $data = $category->products->merge($category->subproducts);
-            // dd($data);
-            $parent = true;
-        }
+        $data = Product::where('category_id','=',$cate_data->id)->with('brand')->where('date_available', '<=', $date_now)->orderby('updated_at', 'DESC')->paginate(9);
         
         return view('product.category',compact('data','cate_data','title','parent'));
     }
