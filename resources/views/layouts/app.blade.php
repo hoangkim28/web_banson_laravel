@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{Voyager::setting('admin.title', '')}} @if(session()->has('title')) -{{$title}} @endif</title>
 
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/huebee.css')}}">
     <link rel="stylesheet" href="{{asset('css/css.css')}}" media="all">
     <link rel="stylesheet" href="{{asset('css/css_JbVnVxTf7KwJuOjfuANA8SK63EtDreszAbn-mz5rX98.css')}}" media="all">
@@ -76,6 +77,7 @@
         </div>
     </div>
 </div>
+<script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/page.js')}}"></script>
 <script src="{{asset('js/notify/notify.js')}}"></script>
 <script src="{{asset('js/notify/notify-metro.js')}}"></script>
