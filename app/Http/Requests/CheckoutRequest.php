@@ -28,7 +28,7 @@ class CheckoutRequest extends FormRequest
             'email' => $emailValidation,
             'name' => 'required|max:255|min:3',
             'address1' => 'required',
-            'phone' => 'required|max:11|min:9',
+            'phone' => 'required|digits:10',
         ];
     }
 
@@ -38,8 +38,7 @@ class CheckoutRequest extends FormRequest
             'name.required' => "Vui lòng cung cấp họ tên!",
             'email.required' => "Vui lòng nhập địa chỉ email!",
             'phone.required' => "Vui lòng cung cấp số điện thoại liên lạc!",
-            'phone.max' => "Số điện thoại không đúng!",
-            'phone.min' => "Số điện thoại không đúng!",
+            'phone.digits' => "Số điện thoại không đúng!",
         ];
     }
 }

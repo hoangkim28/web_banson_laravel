@@ -83,7 +83,7 @@
                   <div class="relative mb-4">
                     <label for="email" class="leading-7 text-lg text-gray-900">Điện thoại liên lạc<span
                         class="text-red-500" title="Bắt buộc nhập">*</span></label>
-                    <input type="number" id="phone" name="phone" value="{{\Auth::user()->phone}}"
+                    <input type="tel" id="phone" name="phone" value="{{old('phone')}}" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" 
                       class="require w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                   </div>
                   @error('phone')
