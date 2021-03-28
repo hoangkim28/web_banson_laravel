@@ -192,7 +192,8 @@ return [
     'additional_css' => [
         'css/voyager-custome-css.css',
         'css/all.min.css',
-        'js/notify/notify-metro.css'
+        'js/notify/notify-metro.css',
+        'css/app/css',
     ],
 
     'additional_js' => [
@@ -202,6 +203,7 @@ return [
         'js/notify/notify-metro.js',
         'js/bootbox.js',
         'js/main-custom.js',
+        'js/app.js',
     ],
 
     'googlemaps' => [
