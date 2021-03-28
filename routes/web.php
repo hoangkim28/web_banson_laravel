@@ -72,3 +72,9 @@ Route::group(['prefix' => '/'], function () {
 });
 
 Route::get('/success', 'CheckoutController@success')->name('checkout.success');
+
+Route::get('/email/verify', function () {
+  return view('auth.verify');
+})->middleware('auth')->name('verification.verify');
+
+Auth::routes(['verfiy' => true]);
