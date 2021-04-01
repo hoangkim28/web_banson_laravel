@@ -142,7 +142,7 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label for="category_id">Danh mục Sơn</label>
-                            <select class="form-control" name="category_id">
+                            <select class="form-control form-select" name="category_id">
                                 @foreach(Voyager::model('Category')::all() as $category)
                                     <option value="{{ $category->id }}"
                                             @if(isset($dataTypeContent->category_id) && $dataTypeContent->category_id == $category->id) selected="selected"@endif>{{ $category->name }}</option>
@@ -164,7 +164,7 @@
                                 '_field_name'  => 'name',
                                 '_field_trans' => get_field_translations($dataTypeContent, 'name')
                             ])
-                            <input type="text" class="form-control" id="name" name="name"
+                            <input type="text" class="form-control forcus:bg-yellow-900" id="name" name="name"
                                    placeholder="Tên sơn"
                                    {!! isFieldSlugAutoGenerator($dataType, $dataTypeContent, "name") !!}
                                    value="{{ $dataTypeContent->name ?? '' }}">
