@@ -64,7 +64,7 @@
               <div class="container-wrap clearfix menu-wrap">
                 <ul class="nav menu menu-parent sm sm-menu" data-smartmenus-id="15956439676389817">
                   @if($Categories)
-                  @foreach($Categories->take(10) as $category)
+                  @foreach($Categories->take(4) as $category)
                   @if($category->parent_id != 0 || $category->parent_id != null)
                   <li class="menu-item menu-item--expanded">
                     <a href="#main-content" data-drupal-link-system-path="<front>" class="has-submenu"
