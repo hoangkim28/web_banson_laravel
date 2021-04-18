@@ -56,7 +56,7 @@ Route::group(['prefix' => '/'], function () {
     Route::post('xac-nhan.html', 'CheckoutController@store')->name('checkout.store');
     Route::get('thay-doi-{rowId}.html', 'CartController@updateItemCart')->name('cart.updateitemcart');
 
-    Route::get('don-hang/{id}.html', 'ManagerController@orderDetail')->name('order.detail');
+    Route::get('don-hang/{id}.html', 'ManagerController@orderDetailtest')->name('order.detail');
 
     Route::get('don-hang-khong-tim-thay.html', 'ManagerController@orderDetail')->name('order.erro');
 

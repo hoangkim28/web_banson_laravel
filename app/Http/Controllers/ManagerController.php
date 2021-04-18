@@ -55,4 +55,14 @@ class ManagerController extends Controller
         }
         return view('order_detail',\compact('order','details'));
     }
+    public function orderDetailtest($id)
+    {
+        $order = Order::where('id','=',$id)->first();
+        $details = OrderDetail::where('order_id','=',$id)->get();
+        if(Auth::user()->email!=$order->email){
+            return view('order_erro');
+        }
+        dd($order);
+        return view('order_detail',\compact('order','details'));
+    }
 }
