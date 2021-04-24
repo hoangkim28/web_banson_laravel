@@ -34,5 +34,7 @@
 </section>
 @endsection
 @section('content')
-
+<div class="container">
+<p class="alert alert-success"> Đặt hàng thành công! Bạn có thể kiễm tra thông tin <a href="{{route('auth.manager')}}"> tại đậy</a></p>
+</div>
 @endsection
