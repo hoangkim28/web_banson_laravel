@@ -359,7 +359,7 @@
                                                                 <tr class="total">
                                                                     <td></td>
                                                                     <td class="alignright">Tổng</td>
-                                                                    <td class="alignright">{{$bill['total']}} ()</td>
+                                                                    <td class="alignright">{{$bill['total']}}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
