@@ -62,7 +62,7 @@ class ManagerController extends Controller
         if(Auth::user()->email!=$order->email){
             return view('order_erro');
         }
-        dd($order);
+        // dd($order);
         return view('order_detail',\compact('order','details'));
     }
 }
