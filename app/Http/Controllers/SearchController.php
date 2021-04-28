@@ -18,13 +18,12 @@ class SearchController extends Controller
         $pageSize = 9;
         $sort = 'asc';
         $q = '';
-
+        $notfound = false;
         if (request()->has('danh-muc') && request('danh-muc')!=null && request('danh-muc')!='All') {
             $name = $request['danh-muc'];
             $cateID = Category::where('slug', '=', $name)->value('id');
             $cate_list = $data->where('category_id', '=', $cateID);
             if($cate_list->get()->count())
-            dd($cate_list->get());
             $data = $cate_list;
         }
 

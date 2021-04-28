@@ -78,7 +78,7 @@
                                 <hr>
                                 {{$data->appends(['sort' => 'asc'])->links()}}
                                 <div class="item-list" style="padding-top: 5vh;">
-                                @if($notfound)
+                                @if(!$notfound)
                                 <p class="alert alert-success">Từ khóa rỗng, nhưng chúng tôi gợi ý cho bạn danh sách bên dưới.</p>
                                 @endif
                                     <ul>
