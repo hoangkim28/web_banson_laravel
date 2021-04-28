@@ -129,8 +129,9 @@
                                                                         @if($item->attribute_id === 1)
                                                                             <input type="radio" id="unit{{$item->value}}"
                                                                                    name="p-unit"
-                                                                                   value="{{$pa->id}}"
+                                                                                   value="{{$pa->id}}" data-id="{{$item->pivot->attribute_value_id}}"
                                                                                    @if($pa->default==1) checked @endif>
+                                                                                  <input type="hidden" id="attibuteValue" name="attibuteValue" value="{{$item->pivot->attribute_value_id}}"> 
                                                                             <label
                                                                                 for="unit{{$item->value}}">{{ $item->name }}</label>
                                                                             <br>
@@ -303,7 +304,6 @@
                 url: '/product-attribute/' + id,
                 dataType: "json",
                 success: function (data) {
-                    console.log(111);
                     if (data.sale_price != null) {
                         $("#span-price").text(formatNumber(parseInt(data.sale_price)) + 'đ');
                         document.getElementById("span-price-old").style.visibility = "visible";
@@ -324,6 +324,8 @@
             var that = $(this).data('id');
             var qty = document.getElementById("p-quantity").value;
             var unit = $('input[name=p-unit]:checked').val();
+            var attibuteValue = $('input[name=p-unit]:checked').data('id');
+            
             if (unit == null)
                 unit = '0';
             let _token = $('meta[name="csrf-token"]').attr('content');
@@ -342,7 +344,8 @@
                     "id": that,
                     "qty": qty,
                     "color": color,
-                    "unit": unit
+                    "unit": unit,
+                    "attibuteValue":attibuteValue,
                 },
                 success: function (data) {
                     console.log(data);

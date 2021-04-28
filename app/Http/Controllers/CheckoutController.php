@@ -28,10 +28,6 @@ class CheckoutController extends Controller
         }
     }
 
-    public function success()
-    {
-        return View('success')->with('messages', 'Thành công!')->with('type', 'success');
-    }
 
     public function store(CheckoutRequest $req)
     {
@@ -52,7 +48,7 @@ class CheckoutController extends Controller
 
                 $nofity = $user->notify(new OrderNotify($orderData, $orderDetailData));
                 \Cart::destroy();
-                return $this->success();
+                return redirect()->route('checkout.success');
             } else {
                 return redirect()->route('cart.index')->with('messages', 'Có lỗi xảy ra!')->with('type', 'danger');
             }
@@ -86,8 +82,9 @@ class CheckoutController extends Controller
                 'product_id' => $item->id,
                 'quantity' => $item->qty,
                 'color' => $item->options->color,
-                'product_price' => $product::find($item->id)->default_price() ? $product::find($item->id)->default_price() :  $item->product_price,
+                'product_price' => $this->getProductPriceByAttribute($item->options->idattr),
                 'product_attribute_id' => $item->options->idattr,
+                'attribute_value_id' => $item->options->idattrvalue,
                 'product_name' => $product::find($item->id)->name,
                 'product_sku' => $product::find($item->id)->sku,
             ]);
@@ -124,5 +121,8 @@ class CheckoutController extends Controller
             }
         }
         return false;
+    }
+    protected function getProductPriceByAttribute($id){
+      return ProductAttribute::find($id)->sale_price ?? ProductAttribute::find($id)->price;
     }
 }

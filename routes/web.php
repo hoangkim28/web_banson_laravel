@@ -36,12 +36,14 @@ Route::group(['prefix' => 'admin/'], function () {
     Route::delete('product-attribute/{__id}', 'Admin\ProductController@deteleAttribute')->name('product.attibute.value.delete');
     //Orders
     Route::get('order/confirm/{id}', 'Admin\OrderController@confirm')->name('admin.orders.confirm');
+    Route::get('admin/products', 'Admin\ProductController@index')->name('voyager.product-attribute.show');
 });
 
 // Ajax get product attibute
 
 Route::get('product-attribute/{id}', 'ProductController@productAttribute')->name('product.attribute.detail');
 
+Route::get('admin/bills/prints/{id}', 'Admin\BillController@print_bill')->name('voyager.bills.print');
 
 
 // Giỏ hàng
@@ -71,7 +73,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('{slug}', 'ProductController@product_cate')->name('product.cate');
 });
 
-Route::get('/success', 'CheckoutController@success')->name('checkout.success');
+Route::get('/thongbao/donhang', 'NoticationController@index')->name('checkout.success');
 
 Route::get('/email/verify', function () {
   return view('auth.verify');

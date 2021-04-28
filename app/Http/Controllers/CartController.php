@@ -23,6 +23,7 @@ class CartController extends Controller
         $qty = $request->qty;
         $product = Product::find($id)->first();
         $unitId = $request->unit;
+        $attributeValueId = $request->attibuteValue;
 
         $productAttributes = ProductAttribute::where('id', '=', $unitId)->first();
 
@@ -42,7 +43,7 @@ class CartController extends Controller
             return response()->json(['msg' => "0"]);
         }
 
-        \Cart::add($id, $product->name, $qty, $productPrice, ['color' => $color, 'unit' => $attr, 'idattr' => $unitId])->associate('App\Models\Product');
+        \Cart::add($id, $product->name, $qty, $productPrice, ['color' => $color, 'unit' => $attr, 'idattr' => $unitId,'idattrvalue'=>$attributeValueId])->associate('App\Models\Product');
 
         return response()->json(['msg' => "1"]);
     }
