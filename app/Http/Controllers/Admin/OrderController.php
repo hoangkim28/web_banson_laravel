@@ -902,7 +902,7 @@ class OrderController extends BaseVoyagerBaseController
         $order->order_status = 4;
         if ($order->save()) {
             $bill = Bill::create([
-                'user_id' => auth()->user() ? auth()->user()->id : null,
+                'user_id' => $order->user_id,
                 'full_name' => $order->full_name,
                 'email' => $order->email,
                 'phone' => $order->phone,
@@ -915,17 +915,19 @@ class OrderController extends BaseVoyagerBaseController
                 'total' => $order->total,
             ]);
             $order_detail = OrderDetail::where('order_id', '=', $order->id)->get();
+            
+            $billdetail = new BillDetail();
             foreach ($order_detail as $item) {
-                OrderDetail::create([
-                    'order_id' => $order->id,
-                    'product_id' => $item->product_id,
-                    'quantity' => $item->quantity,
-                    'color' => $item->color,
-                    'product_price' => $item->product_price,
-                    'product_attribute_id' => $item->product_attribute_id,
-                    'product_name' => $item->product_name,
-                    'product_sku' => $item->product_sku,
-                ]);
+                  $billdetail->order_id = $bill->id;
+                  $billdetail->product_id = $item->product_id;
+                  $billdetail->quantity = $item->quantity;
+                  $billdetail->product_price = $item->product_price;
+                  $billdetail->product_attribute_id = $item->product_attribute_id;
+                  $billdetail->attribute_value_id = $item->attribute_value_id;
+                  $billdetail->product_name = $item->product_name;
+                  $billdetail->product_sku = $item->product_sku;
+                  $billdetail->color = $item->color;
+                  $billdetail->save();
             }
             $user = User::find($order->user_id);
             $nofity = $user->notify(new OrderNotify($order, $order_detail));
@@ -937,7 +939,7 @@ class OrderController extends BaseVoyagerBaseController
             return response()->json([
                 'data' => [
                     'status' => 200,
-                    'message' => __('voyager::success'),
+                    'message' => __('voyager::error'),
                 ],
             ]);
     }
