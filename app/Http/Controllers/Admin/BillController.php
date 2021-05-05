@@ -17,6 +17,9 @@ use TCG\Voyager\Events\BreadImagesDeleted;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController as BaseVoyagerBaseController;
+use App\Models\Bill;
+use App\Models\BillDetail;
+use PDF;
 
 class BillController extends BaseVoyagerBaseController
 {
@@ -204,6 +207,8 @@ class BillController extends BaseVoyagerBaseController
 
         $isSoftDeleted = false;
 
+        $bill_details = BillDetail::where('order_id','=',$id)->get();
+
         if (strlen($dataType->model_name) != 0) {
             $model = app($dataType->model_name);
 
@@ -244,7 +249,7 @@ class BillController extends BaseVoyagerBaseController
             $view = "voyager::$slug.read";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted'));
+        return Voyager::view($view, compact('dataType','bill_details', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted'));
     }
 
     //***************************************
@@ -926,5 +931,27 @@ class BillController extends BaseVoyagerBaseController
 
         // No result found, return empty array
         return response()->json([], 404);
+    }
+    public function print_bill2($id)
+    {
+      $bill = Bill::findOrFail($id);
+      $bill_details = BillDetail::where('order_id','=',$id)->get();
+      return View('voyager::bills.print',compact(
+          'bill','bill_details'
+      ));
+    }
+
+    public function print_bill($id)
+    {
+      $bill = Bill::findOrFail($id);
+      $bill_details = BillDetail::where('order_id','=',$id)->get();
+      // return View('voyager::bills.print',compact(
+      //     'bill','bill_details'
+      // ));
+      view()->share('bill',$bill);
+      $pdf = PDF::loadView('voyager::bills.print', $bill);
+
+      // download PDF file with download method
+      return $pdf->download('hoadon'.$bill->id.'.pdf');
     }
 }
