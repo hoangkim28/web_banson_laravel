@@ -20,10 +20,14 @@ class CheckoutController extends Controller
     public function index()
     {
         $title = 'Đặt hàng';
+        // Kiễm trả số lượng sản phẩm trong giỏ hàng
+        if(!\Cart::count()){
+          return redirect()->route('cart.index')->with('messages', 'Giỏ hàng trống!');
+        }
+
         if (\Auth::user()) {
             return View('checkout')->with('title', $title);
         } else {
-            // dd($title);
             return redirect()->route('login')->with('messages', 'Vui lòng đăng nhập để đặt hàng!');
         }
     }
