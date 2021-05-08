@@ -144,11 +144,11 @@
                                                             <dt>Màu:</dt>
                                                             <dd style="padding-top: 2vh;padding-bottom: 2vh;">
                                                                 <input type="hidden" class="p-color">
-                                                                <input id="color" name="color"
+                                                                <input id="color" name="color" readonly="readonly"
                                                                        class="color-input form-control col-md-auto text-center"
                                                                        type="color-input" style="height: 10vh;"
                                                                        title="Nhấn để chọn màu">
-                                                                <p style="font-style: inherit;font-size: 2vh;padding-top: 1vh;">
+                                                                <p style="font-style: inherit;font-size: 2vh;padding-top: 1vh; color:#F7941D;">
                                                                     ⬆ Nhấn để chọn màu ⬆</p>
                                                             </dd>
                                                         </dl>
