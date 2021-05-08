@@ -74,10 +74,10 @@
                 @php
                 $khongchon = '';
                 if(!$item->options->color){
-                $khongchon = 'Không';
+                $khongchon = 'Màu Trắng';
                 }
                 @endphp
-                <td data-th="Màu" style="background-color: {{$item->options->color ?? '#f1f1f1'}};">{{$khongchon}}</td>
+                <td data-th="Màu" style="background-color: {{$item->options->color ?? '#ffffff'}}; color:dddddd;">{{$khongchon}}</td>
                 <td data-th="Kích thước">{{$item->options->unit}}</td>
                 <td data-th="Giá" class="text-right">{{format($item->price)}}đ</td>
                 <td data-th="Số lượng" class="text-center">
