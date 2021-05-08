@@ -116,9 +116,7 @@
                                                             <dt>Số lượng:</dt>
                                                             <dd style="padding-top: 2vh;padding-bottom: 2vh;">
                                                                 <input id="p-quantity" name="p-quantity" type="number"
-                                                                       class="form-control text-center col-md-6" value="1"
-                                                                       min="1"
-                                                                       max="10"/>
+                                                                       class="form-control text-center col-md-6" value="1" min="1"/>
                                                             </dd>
                                                         </dl>
                                                         <dl>
@@ -323,6 +321,7 @@
                 color = '0';
             var that = $(this).data('id');
             var qty = document.getElementById("p-quantity").value;
+
             var unit = $('input[name=p-unit]:checked').val();
             var attibuteValue = $('input[name=p-unit]:checked').data('id');
             
@@ -338,7 +337,7 @@
 
             $.ajax({
                 type: "post",
-                url: '/add',
+                url: '{{route('cart.add')}}',
                 dataType: "json",
                 data: {
                     "id": that,
@@ -348,7 +347,6 @@
                     "attibuteValue":attibuteValue,
                 },
                 success: function (data) {
-                    console.log(data);
                     if (data.msg == "1") {
                         $.notify("Đã thêm vào giỏ hàng!", "success");
                         $('#cart-header').load(' #cart-header');

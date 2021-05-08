@@ -39,13 +39,12 @@ class CartController extends Controller
         }
 
         // Kiem tra so luong con truoc khi dat
-        if ($qty >= $productAttributes->quantity) {
+        if ($qty > $productAttributes->quantity) {
             return response()->json(['msg' => "0"]);
+        }else{
+          \Cart::add($id, $product->name, $qty, $productPrice, ['color' => $color, 'unit' => $attr, 'idattr' => $unitId,'idattrvalue'=>$attributeValueId])->associate('App\Models\Product');
+          return response()->json(['msg' => "1"]);
         }
-
-        \Cart::add($id, $product->name, $qty, $productPrice, ['color' => $color, 'unit' => $attr, 'idattr' => $unitId,'idattrvalue'=>$attributeValueId])->associate('App\Models\Product');
-
-        return response()->json(['msg' => "1"]);
     }
 
     public function update($rowId, $qty)
