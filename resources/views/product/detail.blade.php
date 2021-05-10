@@ -113,6 +113,12 @@
                                                         </dl>
                                                         @endif
                                                         <dl class="param param-inline">
+                                                            <dt>Hàng: </dt>
+                                                            <dd style="padding-top: 2vh;padding-bottom: 2vh;">
+                                                                <label id="qty_notify" name="qty_notify">Còn {{$default->quantity}} sản phẩm</label>
+                                                            </dd>
+                                                        </dl>
+                                                        <dl class="param param-inline">
                                                             <dt>Số lượng:</dt>
                                                             <dd style="padding-top: 2vh;padding-bottom: 2vh;">
                                                                 <input id="p-quantity" name="p-quantity" type="number"
@@ -310,6 +316,14 @@
                         $("#span-price").text(formatNumber(data.price) + 'đ');
                         document.getElementById("span-price-old").style.visibility = "hidden"
                     }
+                    if(data.quantity){
+                      $("#qty_notify").empty();
+                      $("#qty_notify").append('Còn ' + formatNumber(data.quantity) + ' sản phẩm');
+                    }else{
+                      $("#qty_notify").empty();
+                      $("#qty_notify").append('Hết hàng');
+                    }
+                    
                 }
             });
         });
