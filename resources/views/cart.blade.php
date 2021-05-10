@@ -77,15 +77,14 @@
                 $khongchon = 'Màu Trắng';
                 }
                 @endphp
-                <td data-th="Màu" style="background-color: {{$item->options->color ?? '#ffffff'}}; color:dddddd;">{{$khongchon}}</td>
+                <td data-th="Màu" style="background-color: {{$item->options->color ?? '#ffffff'}}; color:dddddd;">
+                  {{$khongchon}}</td>
                 <td data-th="Kích thước">{{$item->options->unit}}</td>
                 <td data-th="Giá" class="text-right">{{format($item->price)}}đ</td>
                 <td data-th="Số lượng" class="text-center">
-                  <input type="number" name="{{$item->rowId}}" class="text-center"
-                    style="width: 70px ;height: 20px; background: white" min="1" max="{{$item->model->stock}}"
-                    value="{{$item->qty}}" style="background: white; width: 100px;">
+                  {{$item->qty}}
                 </td>
-                <td data-th="Số lượng"><a class="btn-remove" href="" data-id="{{$item->rowId}}"><i
+                <td data-th="Xóa"><a class="btn-remove" href="" data-id="{{$item->rowId}}"><i
                       class="fa fa-trash"></i></a></td>
               </tr>
               @endforeach
@@ -124,7 +123,7 @@
         <div class="float-right" style="padding-bottom: 3vh;">
           <a href="{{route('home')}}" class="button pa-btn form-submit" style="padding-right: 5vh">Xem
             những sản phẩm khác</a>
-          <a href="{{route('checkout.index')}}" class="button form-submit">Đặt hàng</a>
+          <a href="{{route('checkout.index')}}" class="button btn form-submit text-white">Đặt hàng</a>
         </div>
       </div>
     </div>
