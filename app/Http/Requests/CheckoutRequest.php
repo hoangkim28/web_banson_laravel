@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\PhoneNumber;
 
 class CheckoutRequest extends FormRequest
 {
@@ -28,17 +29,18 @@ class CheckoutRequest extends FormRequest
             'email' => $emailValidation,
             'name' => 'required|max:255|min:3',
             'address1' => 'required',
-            'phone' => 'required|digits:10',
+            'phone' => ['required','numeric','max:11','min:10', new PhoneNumber],
         ];
     }
 
     public function messages() {
         return [
-            'address1.required' => "Vui lòng cung cấp địa chỉ nhận hàng!",
             'name.required' => "Vui lòng cung cấp họ tên!",
             'email.required' => "Vui lòng nhập địa chỉ email!",
             'phone.required' => "Vui lòng cung cấp số điện thoại liên lạc!",
-            'phone.digits' => "Số điện thoại không đúng!",
+            'phone.min' => "Vui lòng cung cấp đúng số điện thoại",
+            'phone.max' => "Vui lòng cung cấp đúng số điện thoại",
+            'address1.required' => "Vui lòng cung cấp địa chỉ nhận hàng!",
         ];
     }
 }

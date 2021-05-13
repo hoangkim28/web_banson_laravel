@@ -20,7 +20,7 @@
         <div class="container-wrap clearfix">
           <div class="block-content">
             <nav class="breadcrumb" aria-labelledby="system-breadcrumb">
-              <ul>
+              <ul class="text-uppercase">
                 <li><a href="/"> Trang chủ </a></li>
                 <li> Thông tin đơn hàng</li>
               </ul>
@@ -83,7 +83,7 @@
                   <div class="relative mb-4">
                     <label for="email" class="leading-7 text-lg text-gray-900">Điện thoại liên lạc<span
                         class="text-red-500" title="Bắt buộc nhập">*</span></label>
-                    <input type="tel" id="phone" name="phone" value="{{old('phone')}}" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" 
+                    <input type="number" id="phone" name="phone" min="10" value="{{old('phone')}}" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" 
                       class="require w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                   </div>
                   @error('phone')
@@ -148,14 +148,11 @@
           <div class="single-widget">
             <h2 class="text-uppercase">Thanh toán</h2>
             <div class="content">
-              <div class="checkbox">
-                <label class="checkbox-inline ml-1" for="2"><input name="news" id="2" type="checkbox" checked>
-                  Thanh
-                  toán khi nhận hàng - COD</label><br>
-                <label class="checkbox-inline ml-1" for="3"><input name="news" id="3" type="checkbox">
-                  ATM 34785974552125 Nguyễn Văn A</label>
-                <label class="checkbox-inline ml-1" for="3"><input name="news" id="3" type="checkbox">
-                  Momo 0907666155 </label>
+              <div class="checkbox pb-2">
+              @foreach(\App\Models\PaymentMethod::all() as $payment)
+                <label class="checkbox-inline ml-1" for="{{$payment->id}}"><input name="payment" id="{{$payment->id}}" type="checkbox">
+                {{$payment->name}}</label><br>
+              @endforeach
               </div>
             </div>
           </div>
