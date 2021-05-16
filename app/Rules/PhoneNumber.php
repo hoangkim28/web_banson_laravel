@@ -35,7 +35,6 @@ class PhoneNumber implements Rule
      */
     public function message()
     {
-      dd($this->validated());
         return 'Vui lòng nhập đúng số điện thoại.';
     }
 }

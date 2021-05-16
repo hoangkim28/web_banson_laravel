@@ -113,7 +113,7 @@
             <div class="header-element__item search--element">
               <button type="button" class="header-icon search-icon" onclick="location = '{{route('cart.index')}}'">
                 <i class="fas fa-shopping-cart"></i>
-                <span class="badge" name="cart-header" id="cart-header">{{\Cart::count()}} (SP) <i c></i></span>
+                <span class="badge" name="cart-header" id="cart-header">{{\Cart::getContent()->count()}} (SP) <i c></i></span>
               </button>
 
             </div>
