@@ -7,6 +7,7 @@ use App\Models\AttributeValueProductAttribute;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
+use Cart;
 
 class CartController extends Controller
 {
@@ -42,7 +43,14 @@ class CartController extends Controller
         if ($qty > $productAttributes->quantity) {
             return response()->json(['msg' => "0"]);
         }else{
-          \Cart::add($id, $product->name, $qty, $productPrice, ['color' => $color, 'unit' => $attr, 'idattr' => $unitId,'idattrvalue'=>$attributeValueId])->associate('App\Models\Product');
+          Cart::add(array(
+            'id' => $product->id,
+            'name' => $product->name,
+            'price' => $productPrice,
+            'quantity' => $qty,
+            'attributes' => ['color' => $color, 'unit' => $attr, 'idattr' => $unitId,'idattrvalue'=>$attributeValueId],
+            'associatedModel' => $product
+        ));
           return response()->json(['msg' => "1"]);
         }
     }
@@ -74,7 +82,7 @@ class CartController extends Controller
 
     public function destroy()
     {
-        \Cart::destroy();
+        \Cart::clear();
         return response()->json(['msg' => "Đã xóa"]);
     }
 

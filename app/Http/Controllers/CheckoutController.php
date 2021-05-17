@@ -21,7 +21,7 @@ class CheckoutController extends Controller
     {
         $title = 'Đặt hàng';
         // Kiễm trả số lượng sản phẩm trong giỏ hàng
-        if(!\Cart::count()){
+        if(!\Cart::getContent()->count()){
           return redirect()->route('cart.index')->with('messages', 'Giỏ hàng trống!');
         }
 
@@ -41,7 +41,7 @@ class CheckoutController extends Controller
             return redirect()->route('login')->with('messages', 'Vui lòng đăng nhập để đặt hàng!');
         }
 
-        if (\Cart::count()) {
+        if (\Cart::getContent()->count()) {
             $result = $this->addToOrderTables($req);
             if ($result) {
                 $this->updateCost();
@@ -51,7 +51,7 @@ class CheckoutController extends Controller
                 $orderDetailData = OrderDetail::where('order_id', '=', $orderData->id)->get();
 
                 $nofity = $user->notify(new OrderNotify($orderData, $orderDetailData));
-                \Cart::destroy();
+                \Cart::clear();
                 return redirect()->route('checkout.success');
             } else {
                 return redirect()->route('cart.index')->with('messages', 'Có lỗi xảy ra!')->with('type', 'danger');
@@ -73,24 +73,24 @@ class CheckoutController extends Controller
             'comment' => $req->comment,
             'order_status' => 1,
             'payment_method' => $req->paymend_method,
-            'subtotal' => \Cart::subtotal(),
-            'tax' => \Cart::tax(),
-            'total' => \Cart::total(),
+            'subtotal' => \Cart::getSubTotal(),
+            'tax' => '',
+            'total' => \Cart::getTotal(),
         ]);
         // Insert into order_product table
         $product = new Product();
 
-        foreach (\Cart::content() as $item) {
+        foreach (\Cart::getContent() as $item) {
             OrderDetail::create([
                 'order_id' => $order->id,
                 'product_id' => $item->id,
-                'quantity' => $item->qty,
-                'color' => $item->options->color,
-                'product_price' => $this->getProductPriceByAttribute($item->options->idattr),
-                'product_attribute_id' => $item->options->idattr,
-                'attribute_value_id' => $item->options->idattrvalue,
-                'product_name' => $product::find($item->id)->name,
-                'product_sku' => $product::find($item->id)->sku,
+                'quantity' => $item->quantity,
+                'color' => $item->attributes->color,
+                'product_price' => $this->getProductPriceByAttribute($item->attributes->idattr),
+                'product_attribute_id' => $item->attributes->idattr,
+                'attribute_value_id' => $item->attributes->idattrvalue,
+                'product_name' => $item->name,
+                'product_sku' => $item->associatedModel->sku,
             ]);
         }
         return $order;
@@ -98,29 +98,29 @@ class CheckoutController extends Controller
 
     protected function decreaseQuantities()
     {
-        foreach (\Cart::content() as $item) {
-            $product = Product::find($item->model->id);
-            $stock = $product->stock - $item->qty;
+        foreach (\Cart::getContent() as $item) {
+            $product = Product::find($item->associatedModel->id);
+            $stock = $product->stock - $item->quantity;
             $product->update(['stock' => $stock]);
-            $productAttrQty = ProductAttribute::find($item->options->idattr)->quantity;
-            ProductAttribute::find($item->options->idattr)->update(['quantity' => $productAttrQty - $item->qty]);
+            $productAttrQty = ProductAttribute::find($item->attributes->idattr)->quantity;
+            ProductAttribute::find($item->attributes->idattr)->update(['quantity' => $productAttrQty - $item->qty]);
         }
     }
 
     protected function updateCost()
     {
-        foreach (\Cart::content() as $item) {
-            $product = Product::find($item->model->id);
-            $sold = $product->sold + $item->qty;
+        foreach (\Cart::getContent() as $item) {
+            $product = Product::find($item->associatedModel->id);
+            $sold = $product->sold + $item->quantity;
             $product->update(['sold' => $sold]);
         }
     }
 
     protected function productsAreNoLongerAvailable()
     {
-        foreach (\Cart::content() as $item) {
-            $product = Product::find($item->model->id);
-            if ($product->stock < $item->qty) {
+        foreach (\Cart::getContent() as $item) {
+            $product = Product::find($item->associatedModel->id);
+            if ($product->stock < $item->quantity) {
                 return true;
             }
         }

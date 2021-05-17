@@ -135,10 +135,9 @@
             <h2>TỔNG SỐ</h2>
             <div class="content">
               <ul class="ml-1 grid gap-2" style="list-style:none;">
-                @if(\Cart::count() > 0)
-                <li>Giá trị đơn hàng: <span>{{\Cart::subtotal()}}đ</span></li>
-                <li>Thuế VAT (10%): <span>{{\Cart::tax()}}đ</span></li>
-                <li class="last">Tổng: <span>{{\Cart::total()}}đ</span></li>
+                @if(\Cart::getContent()->count() > 0)
+                <li>Giá trị đơn hàng: <span>{{\Cart::getSubTotal()}}đ</span></li>
+                <li class="last">Tổng: <span>{{\Cart::getTotal()}}đ</span></li>
                 @endif
               </ul>
             </div>
