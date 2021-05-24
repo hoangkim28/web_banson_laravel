@@ -65,7 +65,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="js-form-item form-item js-form-type-textfield form-item-results js-form-item-results form-no-label">
-                                                    <input style="height: 52px;background: white" placeholder="Vui lòng nhập từ khóa..." data-drupal-selector="edit-results" type="text" id="edit-results" name="tu-khoa" value="" size="32" maxlength="128" class="form-text">
+                                                    <input style="height: 52px;background: white;color: black" placeholder="Vui lòng nhập từ khóa..." data-drupal-selector="edit-results" type="text" id="edit-results" name="tu-khoa" value="" size="32" maxlength="128" class="form-text">
                                                 </div>
                                                 <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit-product" type="submit" id="edit-submit-product" value="Tìm kiếm" class="button js-form-submit form-submit"></div>
                                             </form>
