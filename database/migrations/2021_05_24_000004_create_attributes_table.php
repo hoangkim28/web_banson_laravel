@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateAttributesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'categories';
+    public $tableName = 'attributes';
 
     /**
      * Run the migrations.
-     * @table categories
+     * @table attributes
      *
      * @return void
      */
@@ -23,15 +23,10 @@ class CreateCategoriesTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('parent_id')->default(null);
-            $table->string('name', 100);
-            $table->string('slug', 100);
-            $table->tinyInteger('status')->default('0');
+            $table->string('name');
 
-            $table->unique(["slug"], 'categories_slug_unique');
-
+            $table->unique(["name"], 'attributes_name_unique');
             $table->nullableTimestamps();
-
         });
     }
 

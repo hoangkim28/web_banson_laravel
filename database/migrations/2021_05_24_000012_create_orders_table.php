@@ -33,7 +33,7 @@ class CreateOrdersTable extends Migration
             $table->tinyInteger('payment_method')->nullable()->default(null);
             $table->tinyInteger('order_status')->nullable()->default(null);
             $table->mediumText('subtotal')->nullable()->default(null);
-            $table->mediumText('tax')->nullable()->default(null);
+            
             $table->mediumText('total')->nullable()->default(null);
             $table->nullableTimestamps();
         });

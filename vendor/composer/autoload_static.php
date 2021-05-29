@@ -253,6 +253,7 @@ class ComposerStaticInit47383df5303488bdf7762b9dd54cedb6
             'Doctrine\\Common\\' => 16,
             'DeepCopy\\' => 9,
             'DebugBar\\' => 9,
+            'Database\\Seeders\\' => 17,
             'Darryldecode\\' => 13,
         ),
         'C' => 
@@ -669,6 +670,10 @@ class ComposerStaticInit47383df5303488bdf7762b9dd54cedb6
         'DebugBar\\' => 
         array (
             0 => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar',
+        ),
+        'Database\\Seeders\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/database/seeders',
         ),
         'Darryldecode\\' => 
         array (
@@ -1291,6 +1296,21 @@ class ComposerStaticInit47383df5303488bdf7762b9dd54cedb6
         'DataRowsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DataRowsTableSeeder.php',
         'DataTypesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DataTypesTableSeeder.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
+        'Database\\Seeders\\CategoriesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/CategoriesTableSeeder.php',
+        'Database\\Seeders\\DataRowsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/DataRowsTableSeeder.php',
+        'Database\\Seeders\\DataTypesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/DataTypesTableSeeder.php',
+        'Database\\Seeders\\MenuItemsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/MenuItemsTableSeeder.php',
+        'Database\\Seeders\\MenusTableSeeder' => __DIR__ . '/../..' . '/database/seeders/MenusTableSeeder.php',
+        'Database\\Seeders\\PagesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/PagesTableSeeder.php',
+        'Database\\Seeders\\PermissionRoleTableSeeder' => __DIR__ . '/../..' . '/database/seeders/PermissionRoleTableSeeder.php',
+        'Database\\Seeders\\PermissionsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/PermissionsTableSeeder.php',
+        'Database\\Seeders\\PostsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/PostsTableSeeder.php',
+        'Database\\Seeders\\RolesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/RolesTableSeeder.php',
+        'Database\\Seeders\\SettingsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/SettingsTableSeeder.php',
+        'Database\\Seeders\\TranslationsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/TranslationsTableSeeder.php',
+        'Database\\Seeders\\UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeders/UsersTableSeeder.php',
+        'Database\\Seeders\\VoyagerDatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/VoyagerDatabaseSeeder.php',
+        'Database\\Seeders\\VoyagerDummyDatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/VoyagerDummyDatabaseSeeder.php',
         'DebugBar\\Bridge\\CacheCacheCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/Bridge/CacheCacheCollector.php',
         'DebugBar\\Bridge\\DoctrineCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/Bridge/DoctrineCollector.php',
         'DebugBar\\Bridge\\MonologCollector' => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar/Bridge/MonologCollector.php',

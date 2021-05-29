@@ -23,8 +23,7 @@ class CreateProductsTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->bigInteger('category_id')->nullable()->default(null);
-            $table->bigInteger('brand_id')->nullable()->default(null);
+            $table->bigInteger('category_id')->unsigned()->nullable()->default(null);
             $table->string('name', 100);
             $table->string('sku', 100);
             $table->string('seo_title', 100)->nullable()->default(null);
@@ -40,9 +39,11 @@ class CreateProductsTable extends Migration
             $table->dateTime('date_lastview');
             $table->dateTime('date_available');
             $table->integer('stock')->nullable()->default('0');
-
-            $table->unique(["slug"], 'posts_slug_unique');
+            $table->tinyInteger('status')->default('0');
+            $table->unique(["slug"], 'products_slug_unique');
             $table->nullableTimestamps();
+            
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

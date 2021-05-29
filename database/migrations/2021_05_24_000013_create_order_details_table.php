@@ -23,15 +23,20 @@ class CreateOrderDetailsTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->bigInteger('order_id');
-            $table->bigInteger('product_id');
+            $table->bigInteger('order_id')->unsigned();
+            $table->bigInteger('product_id')->unsigned();
             $table->integer('quantity');
             $table->integer('product_price');
-            $table->integer('product_attribute_id')->nullable()->default(null);
-            $table->integer('attribute_value_id')->nullable()->default(null);
+            $table->bigInteger('product_attribute_id')->unsigned()->nullable();
+            $table->bigInteger('attribute_value_id')->unsigned()->nullable();
             $table->string('product_name', 100)->nullable()->default(null);
             $table->string('product_sku', 50)->nullable()->default(null);
             $table->string('color', 7)->nullable()->default(null);
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_attribute_id')->references('id')->on('product_attributes');
+            $table->foreign('attribute_value_id')->references('id')->on('attribute_values');
+
         });
     }
 

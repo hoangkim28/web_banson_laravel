@@ -23,7 +23,7 @@ class CreateBillsTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->nullable()->default(null);
+            $table->bigInteger('user_id')->unsigned()->nullable()->default(null);
             $table->string('full_name', 100)->nullable()->default(null);
             $table->string('email', 100)->nullable()->default(null);
             $table->integer('phone')->nullable()->default(null);
@@ -32,9 +32,11 @@ class CreateBillsTable extends Migration
             $table->integer('comment')->nullable()->default(null);
             $table->integer('payment_method')->nullable()->default(null);
             $table->mediumText('subtotal')->nullable()->default(null);
-            $table->mediumText('tax')->nullable()->default(null);
             $table->mediumText('total')->nullable()->default(null);
             $table->nullableTimestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 

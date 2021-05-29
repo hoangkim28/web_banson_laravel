@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBrandsTable extends Migration
+class CreateProductAttributesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'brands';
+    public $tableName = 'product_attributes';
 
     /**
      * Run the migrations.
-     * @table brands
+     * @table product_attributes
      *
      * @return void
      */
@@ -23,12 +23,17 @@ class CreateBrandsTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->string('name', 100)->nullable()->default(null);
-            $table->string('slug', 100);
-            $table->string('image', 100)->nullable()->default(null);
-            $table->string('website', 100)->nullable()->default(null);
-            $table->tinyInteger('status')->nullable()->default('0');
+            $table->integer('quantity');
+            $table->integer('price')->nullable()->default(null);
+            $table->string('sale_price')->nullable()->default(null);
+            $table->tinyInteger('default')->default('0');
+            $table->unsignedBigInteger('product_id');
+
+            $table->foreign('product_id')->references('id')->on('products');
+
+            $table->index(["product_id"], 'product_attributes_product_id_foreign');
             $table->nullableTimestamps();
+
         });
     }
 
