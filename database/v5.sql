@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2021 at 09:57 AM
+-- Generation Time: Jun 01, 2021 at 10:34 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -190,7 +190,8 @@ INSERT INTO `brands` (`id`, `name`, `slug`, `image`, `website`, `status`, `creat
 (1, 'Sơn Delux', 'son-delux', 'brands\\August2020\\j3rAbkjKE1ct4KwZb565.png', 'http://website01.vn', 1, '2020-01-29 18:20:00', '2020-08-15 20:42:55'),
 (2, 'Sơn Jotun', 'son-jotun', 'brands\\February2020\\4viI80n7b1arJXP2d3D7.png', '', 1, '2020-02-27 00:20:34', '2020-02-27 00:20:34'),
 (3, 'Sơn Mykolor', 'son-mykolor', 'brands\\February2020\\du7CkUXX3G6DG6V2SkbK.jpg', '', 1, '2020-02-27 00:21:25', '2020-02-27 00:21:25'),
-(4, 'Sơn Nippon', 'son-nippon', 'brands\\August2020\\U6yyAf6J50WLeb9jnxQm.png', 'https://nipponpaint.com.vn/', 1, '2020-05-16 00:42:06', '2020-08-15 20:42:21');
+(4, 'Sơn Nippon', 'son-nippon', 'brands\\August2020\\U6yyAf6J50WLeb9jnxQm.png', 'https://nipponpaint.com.vn/', 1, '2020-05-16 00:42:06', '2020-08-15 20:42:21'),
+(5, '1212', '1212', NULL, '1212', 1, '2021-06-01 01:27:17', '2021-06-01 01:27:17');
 
 -- --------------------------------------------------------
 
@@ -302,7 +303,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (27, 4, 'created_at', 'timestamp', 'Ngày thêm', 0, 1, 1, 0, 0, 0, '{\"format\":\"%Y-%m-%d\"}', 7),
 (28, 4, 'updated_at', 'timestamp', 'Ngày cập nhật', 0, 0, 0, 0, 0, 0, '{\"format\":\"%Y-%m-%d\"}', 8),
 (73, 12, 'id', 'number', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(74, 12, 'name', 'text', 'Tên', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"6\"}}', 2),
+(74, 12, 'name', 'text', 'Tên', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"6\"},\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"Vui l\\u00f2ng nh\\u1eadp t\\u00ean.\"}}}', 2),
 (75, 12, 'image', 'image', 'Hinh ảnh', 0, 1, 1, 1, 1, 1, '{\"resize\":{\"width\":\"1000\",\"height\":\"null\"},\"display\":{\"width\":\"6\"},\"quality\":\"70%\",\"upsize\":true,\"thumbnails\":[{\"name\":\"medium\",\"scale\":\"50%\"},{\"name\":\"small\",\"scale\":\"25%\"},{\"name\":\"cropped\",\"crop\":{\"width\":\"300\",\"height\":\"250\"}}]}', 5),
 (76, 12, 'website', 'text', 'Website', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"6\"}}', 4),
 (77, 12, 'status', 'checkbox', 'Trạng thái', 1, 1, 1, 1, 1, 1, '{\"on\":\"Hi\\u1ec3n th\\u1ecb\",\"off\":\"\\u1ea8n\",\"checked\":\"true\",\"display\":{\"width\":\"2\"}}', 6),
@@ -344,13 +345,13 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (166, 27, 'id', 'number', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 (168, 27, 'category_id', 'select_dropdown', 'Category Id', 0, 0, 1, 1, 1, 1, '{}', 3),
 (169, 27, 'brand_id', 'select_dropdown', 'Brand Id', 0, 0, 1, 1, 1, 1, '{}', 5),
-(170, 27, 'name', 'text', 'Tên', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"6\"}}', 6),
-(171, 27, 'sku', 'text', 'Sku', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"6\"}}', 8),
+(170, 27, 'name', 'text', 'Tên', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"6\"},\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"Vui l\\u00f2ng nh\\u1eadp t\\u00ean s\\u1ea3n ph\\u1ea9m.\"}}}', 6),
+(171, 27, 'sku', 'text', 'Sku', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"6\"},\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"Vui l\\u00f2ng nh\\u1eadp m\\u00e3 s\\u1ea3n ph\\u1ea9m.\"}}}', 8),
 (172, 27, 'seo_title', 'text', 'Seo Title', 0, 0, 1, 1, 1, 1, '{}', 20),
 (173, 27, 'excerpt', 'text', 'Giới thiệu', 0, 0, 1, 1, 1, 1, '{}', 19),
 (174, 27, 'body', 'rich_text_box', 'Thông tin sản phẩm', 1, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"12\"}}', 15),
-(175, 27, 'avatar', 'image', 'Ảnh đại diện', 1, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"6\"}}', 17),
-(177, 27, 'slug', 'text', 'Slug', 1, 0, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"name\",\"forceUpdate\":true},\"validation\":{\"rule\":\"unique:products,slug\"},\"display\":{\"width\":\"6\"}}', 7),
+(175, 27, 'avatar', 'image', 'Ảnh đại diện', 1, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"6\"},\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"Vui l\\u00f2ng th\\u00eam h\\u00ecnh \\u1ea3nh s\\u1ea3n ph\\u1ea9m.\"}}}', 17),
+(177, 27, 'slug', 'text', 'Slug', 1, 0, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"name\",\"forceUpdate\":true},\"validation\":{\"rule\":\"unique:products,slug,required\",\"messages\":{\"required\":\"Vui l\\u00f2ng nh\\u1eadp m\\u00e3 s\\u1ea3n ph\\u1ea9m.\"}},\"display\":{\"width\":\"6\"}}', 7),
 (178, 27, 'meta_description', 'text_area', 'Meta Description', 0, 0, 1, 1, 1, 1, '{}', 21),
 (179, 27, 'meta_keywords', 'text_area', 'Meta Keywords', 0, 0, 1, 1, 1, 1, '{}', 22),
 (180, 27, 'status', 'checkbox', 'Trạng thái', 1, 1, 1, 1, 1, 1, '{\"on\":\"Hi\\u1ec3n th\\u1ecb\",\"off\":\"\\u1ea8n\",\"checked\":\"on\",\"display\":{\"width\":\"3\"}}', 29),
@@ -358,7 +359,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (186, 27, 'sold', 'number', 'Đã bán', 0, 1, 1, 0, 0, 1, '{\"display\":{\"width\":\"2\"}}', 14),
 (187, 27, 'view', 'number', 'Lượt xem', 0, 1, 1, 0, 0, 1, '{\"display\":{\"width\":\"2\"}}', 16),
 (188, 27, 'date_lastview', 'timestamp', 'Date Lastview', 1, 0, 0, 0, 0, 1, '{}', 23),
-(189, 27, 'date_available', 'timestamp', 'Ngày hiện thị', 1, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"}}', 24),
+(189, 27, 'date_available', 'timestamp', 'Ngày hiện thị', 1, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"},\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"Vui l\\u00f2ng ng\\u00e0y s\\u1ea3n ph\\u1ea9m s\\u1ebd hi\\u1ec3n th\\u1ecb.\"}}}', 24),
 (190, 27, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 0, 0, 1, '{}', 26),
 (191, 27, 'updated_at', 'timestamp', 'Updated At', 0, 0, 1, 0, 0, 1, '{}', 28),
 (193, 27, 'product_hasone_brand_relationship', 'relationship', 'Thương hiệu', 0, 0, 0, 1, 1, 1, '{\"display\":{\"width\":\"4\"},\"model\":\"App\\\\Models\\\\Brand\",\"table\":\"brands\",\"type\":\"belongsTo\",\"column\":\"brand_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"brands\",\"pivot\":\"0\",\"taggable\":\"0\"}', 4),
@@ -436,13 +437,13 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2020-01-29 02:08:49', '2020-01-29 02:08:49'),
 (3, 'roles', 'roles', 'Phân Quyền', 'Phân Quyền', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2020-01-29 02:08:49', '2020-05-20 00:44:34'),
 (4, 'categories', 'categories', 'Danh mục sản phẩm', 'Danh mục sản phẩm', 'voyager-categories', 'App\\Models\\Category', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":\"name\",\"scope\":null}', '2020-01-29 02:08:49', '2020-08-15 15:17:25'),
-(12, 'brands', 'brands', 'Thương hiệu', 'Thương hiệu', 'voyager-company', 'App\\Models\\Brand', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-01-29 11:16:17', '2021-06-01 00:08:25'),
+(12, 'brands', 'brands', 'Thương hiệu', 'Thương hiệu', 'voyager-company', 'App\\Models\\Brand', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-01-29 11:16:17', '2021-06-01 01:27:14'),
 (17, 'order_statuses', 'order-statuses', 'Order Status', 'Order Statuses', 'voyager-info-circled', 'App\\Models\\OrderStatus', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-01-29 17:00:44', '2020-01-29 17:01:54'),
 (19, 'order', 'order', 'Order', 'Orders', NULL, 'App\\Models\\Order', NULL, 'App\\Http\\Controllers\\Admin\\OrderController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-01-29 17:04:33', '2020-01-29 17:04:33'),
 (20, 'orders', 'orders', 'Đơn hàng', 'Đơn hàng', 'voyager-basket', 'App\\Models\\Order', NULL, 'App\\Http\\Controllers\\Admin\\OrderController', NULL, 1, 1, '{\"order_column\":\"updated_at\",\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":\"phone\",\"scope\":null}', '2020-01-29 17:05:19', '2021-06-01 00:13:22'),
 (23, 'payment_methods', 'payment-methods', 'Payment Method', 'Payment Methods', 'voyager-code', 'App\\Models\\PaymentMethod', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-01-29 18:10:13', '2020-01-29 18:15:16'),
 (25, 'product_attribute', 'product-attribute', 'Product Attribute', 'Product Attributes', NULL, 'App\\Models\\ProductAttribute', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-05-29 16:50:59', '2020-05-29 16:50:59'),
-(27, 'products', 'products', 'Sản phẩm', 'Sản phẩm', 'voyager-data', 'App\\Models\\Product', NULL, 'App\\Http\\Controllers\\Admin\\ProductController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-05-31 12:26:32', '2021-04-04 16:25:35'),
+(27, 'products', 'products', 'Sản phẩm', 'Sản phẩm', 'voyager-data', 'App\\Models\\Product', NULL, 'App\\Http\\Controllers\\Admin\\ProductController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-05-31 12:26:32', '2021-06-01 01:24:25'),
 (38, 'attributes', 'attributes', 'Thuộc tính sản phẩm', 'Thuộc tính sản phẩm', NULL, 'App\\Models\\Attribute', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-07-07 14:22:28', '2021-05-12 14:56:42'),
 (39, 'attribute_values', 'attribute-values', 'Giá trị của thuộc tính', 'Giá trị của các thuộc tính', NULL, 'App\\Models\\AttributeValue', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-07-07 14:23:22', '2020-07-09 13:50:51'),
 (40, 'customers', 'customers', 'Khách hàng', 'Khách hàng', 'voyager-people', 'App\\Models\\Customer', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-11-04 13:54:53', '2021-05-12 14:55:29'),
@@ -974,7 +975,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `brand_id`, `name`, `sku`, `seo_title`, `excerpt`, `body`, `avatar`, `slug`, `meta_description`, `meta_keywords`, `featured`, `sold`, `view`, `date_lastview`, `date_available`, `stock`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Sơn Nippon Tilac', 'son-nippon-tilac', 'Sơn Nippon Tilac', 'Sơn Nippon Tilac', '<div class=\"product-page-detail__right__information\" style=\"box-sizing: border-box; margin-top: 30px; margin-bottom: 30px; color: #000000; font-family: averta-400; font-size: 16px;\">\r\n<div class=\"field field-field-product-infomation field-label-above\" style=\"box-sizing: border-box;\">\r\n<div class=\"field-item\" style=\"box-sizing: border-box; margin-top: 10px;\">\r\n<p style=\"box-sizing: border-box; margin: 0px 0px 15px;\">TILAC l&agrave; loại sơn dầu gốc Alkyd, một th&agrave;nh phần, c&oacute; độ bền cao. TILAC được sử dụng l&agrave;m lớp sơn phủ cho c&aacute;c bề mặt gỗ v&agrave; kim loại, nội v&agrave; ngoại thất.</p>\r\n</div>\r\n</div>\r\n</div>\r\n<div class=\"row product-page-detail__right__video\" style=\"box-sizing: border-box; display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; color: #000000; font-family: averta-400; font-size: 16px;\">\r\n<div class=\"col-md-12 product-page-detail__right__video-full video\" style=\"box-sizing: border-box; position: relative; width: 845px; min-height: 1px; padding-right: 15px; padding-left: 15px; flex: 0 0 100%; max-width: 100%;\">\r\n<div class=\"field field-field-feature field-label-hidden field-item\" style=\"box-sizing: border-box;\">\r\n<p style=\"box-sizing: border-box; margin: 0px 0px 15px;\"><span style=\"box-sizing: border-box; font-family: averta-600;\">Đặc điểm:</span><br style=\"box-sizing: border-box;\" />- Kinh tế v&agrave; dễ sử dụng<br style=\"box-sizing: border-box;\" />- C&oacute; đặc t&iacute;nh chống ăn m&ograve;n, hiệu quả cao hơn khi kết hợp với lớp sơn l&oacute;t<br style=\"box-sizing: border-box;\" />- M&agrave;ng sơn c&oacute; độ bền cao<br style=\"box-sizing: border-box;\" />- Độ b&aacute;m d&iacute;nh rất tốt tr&ecirc;n nhiều bề mặt<br style=\"box-sizing: border-box;\" />- M&agrave;ng sơn phẳng mịn<br style=\"box-sizing: border-box;\" />- Thời gian kh&ocirc; ngắn hơn so với c&aacute;c loại sơn tương tự kh&aacute;c</p>\r\n</div>\r\n</div>\r\n</div>', 'products\\June2021\\lqlAMGNPC6OJQSdOpmUe.jpg', 'son-nippon-tilac', 'Sơn Nippon Tilac', 'Sơn Nippon Tilac', 1, 7, NULL, '2021-06-01 07:52:07', '2021-06-01 07:52:07', 11, 1, '2021-06-01 00:01:29', '2021-06-01 00:54:19');
+(1, 1, 1, 'Sơn Nippon Tilac', 'son-nippon-tilac', 'Sơn Nippon Tilac', 'Sơn Nippon Tilac', '<div class=\"product-page-detail__right__information\" style=\"box-sizing: border-box; margin-top: 30px; margin-bottom: 30px; color: #000000; font-family: averta-400; font-size: 16px;\">\r\n<div class=\"field field-field-product-infomation field-label-above\" style=\"box-sizing: border-box;\">\r\n<div class=\"field-item\" style=\"box-sizing: border-box; margin-top: 10px;\">\r\n<p style=\"box-sizing: border-box; margin: 0px 0px 15px;\">TILAC l&agrave; loại sơn dầu gốc Alkyd, một th&agrave;nh phần, c&oacute; độ bền cao. TILAC được sử dụng l&agrave;m lớp sơn phủ cho c&aacute;c bề mặt gỗ v&agrave; kim loại, nội v&agrave; ngoại thất.</p>\r\n</div>\r\n</div>\r\n</div>\r\n<div class=\"row product-page-detail__right__video\" style=\"box-sizing: border-box; display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; color: #000000; font-family: averta-400; font-size: 16px;\">\r\n<div class=\"col-md-12 product-page-detail__right__video-full video\" style=\"box-sizing: border-box; position: relative; width: 845px; min-height: 1px; padding-right: 15px; padding-left: 15px; flex: 0 0 100%; max-width: 100%;\">\r\n<div class=\"field field-field-feature field-label-hidden field-item\" style=\"box-sizing: border-box;\">\r\n<p style=\"box-sizing: border-box; margin: 0px 0px 15px;\"><span style=\"box-sizing: border-box; font-family: averta-600;\">Đặc điểm:</span><br style=\"box-sizing: border-box;\" />- Kinh tế v&agrave; dễ sử dụng<br style=\"box-sizing: border-box;\" />- C&oacute; đặc t&iacute;nh chống ăn m&ograve;n, hiệu quả cao hơn khi kết hợp với lớp sơn l&oacute;t<br style=\"box-sizing: border-box;\" />- M&agrave;ng sơn c&oacute; độ bền cao<br style=\"box-sizing: border-box;\" />- Độ b&aacute;m d&iacute;nh rất tốt tr&ecirc;n nhiều bề mặt<br style=\"box-sizing: border-box;\" />- M&agrave;ng sơn phẳng mịn<br style=\"box-sizing: border-box;\" />- Thời gian kh&ocirc; ngắn hơn so với c&aacute;c loại sơn tương tự kh&aacute;c</p>\r\n</div>\r\n</div>\r\n</div>', 'products\\June2021\\lqlAMGNPC6OJQSdOpmUe.jpg', 'son-nippon-tilac', 'Sơn Nippon Tilac', 'Sơn Nippon Tilac', 1, 7, NULL, '2021-06-01 08:34:09', '2021-06-01 08:34:09', 11, 1, '2021-06-01 00:01:29', '2021-06-01 01:34:09');
 
 -- --------------------------------------------------------
 
@@ -1430,7 +1431,7 @@ ALTER TABLE `bill_details`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `categories`

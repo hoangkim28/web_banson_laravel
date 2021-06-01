@@ -162,7 +162,7 @@
                                                 
                                             </td>
                                             <td class="text-center">
-                                                {{App\Models\AttributeValue::find($item->product_attribute_id)}}
+                                                {{App\Models\AttributeValue::find($item->product_attribute_id)->name}}
                                             </td>
 
                                             <td class="text-center" style="max-width: 70px">

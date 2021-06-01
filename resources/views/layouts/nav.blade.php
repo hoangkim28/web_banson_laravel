@@ -67,7 +67,7 @@
                   @foreach($Categories->take(4) as $category)
                   @if($category->parent_id != 0 || $category->parent_id != null)
                   <li class="menu-item menu-item--expanded">
-                    <a href="#main-content" data-drupal-link-system-path="<front>" class="has-submenu"
+                    <a href="{{route('product.cate',$category->slug)}}" data-drupal-link-system-path="<front>" class="has-submenu"
                       id="sm-15956439676389817-3" aria-haspopup="true" aria-controls="sm-15956439676389817-4"
                       aria-expanded="false">{{$category->name}}<span class="sub-arrow"></span></a>
                     <ul class="menu" id="sm-15956439676389817-4" role="group" aria-hidden="true"

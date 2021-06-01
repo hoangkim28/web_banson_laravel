@@ -279,7 +279,7 @@
                                                 @endif
                                             @endforeach
                                             <a href="{{route('admin.product.attribute',$data->getKey())}}" title="Quản lý sản phẩm con" class="btn btn-sm btn-primary pull-right edit">
-                                                <i class="voyager-list-add"></i> <span class="hidden-xs hidden-sm"></span>
+                                                <i class="voyager-list-add"></i> Quản lý sản phẩm con <span class="hidden-xs hidden-sm"></span>
                                             </a>
                                         </td>
                                     </tr>
