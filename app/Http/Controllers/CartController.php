@@ -44,7 +44,7 @@ class CartController extends Controller
             return response()->json(['msg' => "0"]);
         }else{
           Cart::add(array(
-            'id' => $product->id,
+            'id' => $attributeValueId,
             'name' => $product->name,
             'price' => $productPrice,
             'quantity' => $qty,
