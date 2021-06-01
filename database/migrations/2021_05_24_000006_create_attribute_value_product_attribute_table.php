@@ -10,7 +10,7 @@ class CreateAttributeValueProductAttributeTable extends Migration
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'attr_val_pro_attr';
+    public $tableName = 'attribute_value_product_attribute';
 
     /**
      * Run the migrations.
@@ -22,11 +22,12 @@ class CreateAttributeValueProductAttributeTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->unsignedBigInteger('attr_val_id');
-            $table->unsignedBigInteger('pro_attr_id');
-            $table->foreign('attr_val_id','attribute_values_foregin')->references('id')->on('attribute_values')->onDelete('cascade');
-            $table->foreign('pro_attr_id','attribute_values_foregin2')->references('id')->on('product_attributes')->onDelete('cascade');
-            $table->primary(['attr_val_id', 'pro_attr_id']);
+            $table->unsignedBigInteger('attribute_value_id');
+            $table->unsignedBigInteger('product_attribute_id');
+            // $table->unique(['attribute_value_id', 'product_attribute_id'], 'patt');
+            // $table->foreign('attribute_value_id','attr_val')->references('id')->on('attribute_values')->onDelete('cascade');
+            // $table->foreign('product_attribute_id','pro_attr')->references('id')->on('product_attributes')->onDelete('cascade');
+            // $table->primary(['attribute_value_id', 'product_attribute_id']);
 
         });
     }
