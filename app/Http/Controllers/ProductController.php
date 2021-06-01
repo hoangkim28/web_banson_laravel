@@ -16,7 +16,7 @@ class ProductController extends Controller
             ->with('category')
             ->first();
 
-        $product->increment('view');
+        $product->update(['view'=> $product->view+=1]);
 
         $related = Product::where('slug', '!=', $slug)
             ->inRandomOrder()
