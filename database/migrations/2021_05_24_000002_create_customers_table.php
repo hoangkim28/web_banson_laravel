@@ -29,8 +29,8 @@ class CreateCustomersTable extends Migration
             $table->string('address', 100)->nullable()->default(null);
             $table->integer('phone')->nullable()->default(null);
             $table->date('birthday')->nullable()->default('2020-01-01');
-            $table->bigInteger('user_id')->nullable()->default(null);
-
+            $table->bigInteger('user_id')->unsigned()->nullable()->default(null);
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unique(["email"], 'customer_email_unique');
 
             $table->index(["user_id"], 'customer_user_id_index');

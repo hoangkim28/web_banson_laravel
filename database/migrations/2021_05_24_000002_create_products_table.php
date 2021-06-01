@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->bigInteger('category_id')->unsigned()->nullable()->default(null);
+            $table->bigInteger('brand_id')->unsigned()->nullable()->default(null);
             $table->string('name', 100);
             $table->string('sku', 100);
             $table->string('seo_title', 100)->nullable()->default(null);
@@ -44,6 +45,8 @@ class CreateProductsTable extends Migration
             $table->nullableTimestamps();
             
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('brand_id')->references('id')->on('brands');
+
         });
     }
 

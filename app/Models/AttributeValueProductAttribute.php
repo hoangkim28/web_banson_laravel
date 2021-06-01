@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class AttributeValueProductAttribute extends Model
 {
-    protected $table = 'attribute_value_product_attribute';
+    protected $table = 'attr_val_pro_attr';
 }

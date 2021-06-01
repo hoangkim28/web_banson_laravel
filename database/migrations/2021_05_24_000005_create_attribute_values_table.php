@@ -27,6 +27,8 @@ class CreateAttributeValuesTable extends Migration
             $table->string('value');
             $table->unsignedBigInteger('attribute_id');
 
+            $table->foreign('attribute_id')->references('id')->on('attributes');
+
             $table->index(["attribute_id"], 'attribute_values_attribute_id_foreign');
             $table->nullableTimestamps();
         });
