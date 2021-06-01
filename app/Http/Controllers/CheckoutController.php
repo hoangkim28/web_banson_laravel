@@ -74,7 +74,6 @@ class CheckoutController extends Controller
             'order_status' => 1,
             'payment_method' => $req->paymend_method,
             'subtotal' => \Cart::getSubTotal(),
-            'tax' => '',
             'total' => \Cart::getTotal(),
         ]);
         // Insert into order_product table
@@ -93,6 +92,7 @@ class CheckoutController extends Controller
                 'product_sku' => $item->associatedModel->sku,
             ]);
         }
+        $this->decreaseQuantities();
         return $order;
     }
 
@@ -103,7 +103,7 @@ class CheckoutController extends Controller
             $stock = $product->stock - $item->quantity;
             $product->update(['stock' => $stock]);
             $productAttrQty = ProductAttribute::find($item->attributes->idattr)->quantity;
-            ProductAttribute::find($item->attributes->idattr)->update(['quantity' => $productAttrQty - $item->qty]);
+            ProductAttribute::find($item->attributes->idattr)->update(['quantity' => $productAttrQty - $item->quantity]);
         }
     }
 

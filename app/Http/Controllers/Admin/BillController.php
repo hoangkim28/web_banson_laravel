@@ -207,7 +207,7 @@ class BillController extends BaseVoyagerBaseController
 
         $isSoftDeleted = false;
 
-        $bill_details = BillDetail::where('order_id','=',$id)->get();
+        $bill_details = BillDetail::where('bill_id','=',$id)->get();
 
         if (strlen($dataType->model_name) != 0) {
             $model = app($dataType->model_name);
@@ -935,7 +935,7 @@ class BillController extends BaseVoyagerBaseController
     public function print_bill2($id)
     {
       $bill = Bill::findOrFail($id);
-      $bill_details = BillDetail::where('order_id','=',$id)->get();
+      $bill_details = BillDetail::where('bill_id','=',$id)->get();
       return View('voyager::bills.print',compact(
           'bill','bill_details'
       ));
@@ -944,7 +944,7 @@ class BillController extends BaseVoyagerBaseController
     public function print_bill($id)
     {
       $bill = Bill::findOrFail($id);
-      $bill_details = BillDetail::where('order_id','=',$id)->get();
+      $bill_details = BillDetail::where('bill_id','=',$id)->get();
       // return View('voyager::bills.print',compact(
       //     'bill','bill_details'
       // ));

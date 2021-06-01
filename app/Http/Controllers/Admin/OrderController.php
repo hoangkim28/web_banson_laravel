@@ -428,6 +428,14 @@ class OrderController extends BaseVoyagerBaseController
         } else {
             // Single item delete, get ID from URL
             $ids[] = $id;
+            $order_detail = OrderDetail::where('order_id','=',$id);
+            foreach ($order_detail as $item) {
+                  $update = Product::find($item->product_id);
+                  $update->update(['stock' => $update->stock + $item->quantity,'sold'=>$update->sold - $item->quantity]);
+                  $pro_attr = ProductAttribute::find($item->product_attribute_id);
+                  $pro_attr->update(['quantity'=>$pro_attr->quantity + $item->quantity]);
+            }
+            $order_detail->delete();
         }
         foreach ($ids as $id) {
             $data = call_user_func([$dataType->model_name, 'findOrFail'], $id);
@@ -911,14 +919,13 @@ class OrderController extends BaseVoyagerBaseController
                 'comment' => $order->comment,
                 'payment_method' => $order->paymend_method,
                 'subtotal' => $order->subtotal,
-                'tax' => $order->tax,
                 'total' => $order->total,
             ]);
             $order_detail = OrderDetail::where('order_id', '=', $order->id)->get();
             
             $billdetail = new BillDetail();
             foreach ($order_detail as $item) {
-                  $billdetail->order_id = $bill->id;
+                  $billdetail->bill_id = $bill->id;
                   $billdetail->product_id = $item->product_id;
                   $billdetail->quantity = $item->quantity;
                   $billdetail->product_price = $item->product_price;
@@ -928,6 +935,8 @@ class OrderController extends BaseVoyagerBaseController
                   $billdetail->product_sku = $item->product_sku;
                   $billdetail->color = $item->color;
                   $billdetail->save();
+                  
+                  
             }
             $user = User::find($order->user_id);
             $nofity = $user->notify(new OrderNotify($order, $order_detail));

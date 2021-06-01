@@ -113,7 +113,15 @@
             <div class="header-element__item search--element">
               <button type="button" class="header-icon search-icon" onclick="location = '{{route('cart.index')}}'">
                 <i class="fas fa-shopping-cart"></i>
-                <span class="badge" name="cart-header" id="cart-header">{{\Cart::getContent()->count()}} (SP) <i c></i></span>
+                <span class="badge" name="cart-header" id="cart-header">
+                @php
+                \Cart::getContent()->count();
+                $qty = 0;
+                foreach(\Cart::getContent() as $item){
+                  $qty += $item->quantity;
+                }
+                echo $qty;
+                @endphp (SP) <i c></i></span>
               </button>
 
             </div>
