@@ -82,10 +82,10 @@
 <script src="{{asset('js/notify/notify.js')}}"></script>
 <script src="{{asset('js/notify/notify-metro.js')}}"></script>
 <script src="{{asset('js/js_WNXorJ4BDUm_Ziu4fwiqk7Dctc-axPnPi6bEqSQmUFE.js')}}"></script>
-<!-- <script src="{{asset('js/js_UAPMnSZ5_CzKlSnJRdj9fTedCW9w7soukQFWGM05LR8.js')}}"></script> -->
+<script src="{{asset('js/js_UAPMnSZ5_CzKlSnJRdj9fTedCW9w7soukQFWGM05LR8.js')}}"></script>
 <script src="{{asset('js/js_zu-9NTF4-EokM8GSPqXnbnBirt2XLftTcUbPiZA4T2s.js')}}"></script>
 <script src="{{asset('js/js_YlsFIXjolpdih-EpuUxeEfMVWpVkHxNrPP63EztD8oA.js')}}"></script>
-<!-- <script src="{{asset('js/js_TG1gJBEzNW0XL7FDoP4DuKZg29L0dt_kDO3lop3KNps.js')}}"></script> -->
+<script src="{{asset('js/js_TG1gJBEzNW0XL7FDoP4DuKZg29L0dt_kDO3lop3KNps.js')}}"></script>
 @yield('script')
 @yield('scripts')
 <div id="drupal-modal" class="ui-front" style="display: none;"></div><div style="position: absolute; bottom: 0px; left: 0px; width: 1px; height: 1px; overflow: hidden; visibility: hidden;"><iframe src="{{asset('images/_tracking1.gif')}}" name="admIframeTracking" id="admIframeTracking" style="width: 12px; height: 12px; visibility: hidden; position: absolute; left: 0px; bottom: 0px; border: none;"></iframe></div>

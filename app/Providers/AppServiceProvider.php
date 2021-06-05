@@ -34,8 +34,10 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer(['layouts.nav','product.search','product.category'], function ($toView) {
             $Category = Category::all()->where('status','=',1);
+            $Brand = Brand::all()->where('status','=',1);
             $keyword = '';
             $toView->with('Categories', $Category)
+                ->with('Brand',$Brand)
                 ->with('keyword',$keyword);
         });
         

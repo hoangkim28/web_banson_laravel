@@ -63,22 +63,22 @@
             <nav aria-labelledby="block-wosh-sub-main-menu" id="block-wosh-sub-main-menu" class="block block-system">
               <div class="container-wrap clearfix menu-wrap">
                 <ul class="nav menu menu-parent sm sm-menu" data-smartmenus-id="15956439676389817">
-                  @if($Categories)
-                  @foreach($Categories->take(4) as $category)
-                  @if($category->parent_id != 0 || $category->parent_id != null)
                   <li class="menu-item menu-item--expanded">
-                    <a href="{{route('product.cate',$category->slug)}}" data-drupal-link-system-path="<front>" class="has-submenu"
+                    <a href="#main-content" data-drupal-link-system-path="<front>" class="has-submenu"
                       id="sm-15956439676389817-3" aria-haspopup="true" aria-controls="sm-15956439676389817-4"
-                      aria-expanded="false">{{$category->name}}<span class="sub-arrow"></span></a>
+                      aria-expanded="false">Danh mục<span class="sub-arrow"></span></a>
                     <ul class="menu" id="sm-15956439676389817-4" role="group" aria-hidden="true"
                       aria-labelledby="sm-15956439676389817-3" aria-expanded="false">
+                      @if($Categories)
+                      @foreach($Categories as $category)
+                      @if($category->parent_id == 0)
                       <li class="menu-item menu-item--expanded">
                         <a href="{{route('product.cate',$category->slug)}}"
                           data-drupal-link-system-path="taxonomy/term/36" class="has-submenu"
                           id="sm-15956439676389817-5" aria-expanded="false">{{$category->name}}
-                          @if($category->children()->count() > 0)
+                          @if ($category->children()->count() > 0)
                           <span class="sub-arrow"></span> @endif</a>
-                        @if ($category->children()->count() > 0)
+                        @if($category->children()->count() > 0)
                         <ul class="menu" id="sm-15956439676389817-6" role="group" aria-hidden="true"
                           aria-expanded="false">
                           @foreach($category->children as $category)
@@ -89,14 +89,27 @@
                         </ul>
                         @endif
                       </li>
+                      @endif
+                      @endforeach
+                      @endif
                     </ul>
                   </li>
-                  @else
-                  <li class="menu-item"><a href="{{route('product.cate',$category->slug)}}"
-                      data-drupal-link-system-path="dai-ly">{{$category->name}}</a></li>
-                  @endif
-                  @endforeach
-                  @endif
+                  <li class="menu-item menu-item--expanded">
+                    <a href="#main-content" data-drupal-link-system-path="<front>" class="has-submenu"
+                      id="sm-15956439676389817-7" aria-haspopup="true" aria-controls="sm-15956439676389817-8"
+                      aria-expanded="false">Hỗ trợ<span class="sub-arrow"></span></a>
+                    <ul class="menu" id="sm-15956439676389817-8" role="group" aria-hidden="true"
+                      aria-labelledby="sm-15956439676389817-7" aria-expanded="false">
+                      <li class="menu-item"><a href="/" data-drupal-link-system-path="tinh-toan-luong-son">Tính
+                          toán lượng sơn</a></li>
+                      <li class="menu-item"><a href="/" data-drupal-link-system-path="taxonomy/term/96">Mẹo
+                          sơn nhà</a></li>
+                      <li class="menu-item"><a href="/" data-drupal-link-system-path="webform/dich_vu_phoi_mau">Hỗ
+                          trợ phối màu </a></li>
+                    </ul>
+                  </li>
+                  <li class="menu-item"><a href="/vi/dai-ly" data-drupal-link-system-path="dai-ly">Tìm
+                      đại lý</a></li>
                 </ul>
                 <div class="menu-mobile">
                 </div>
@@ -114,14 +127,14 @@
               <button type="button" class="header-icon search-icon" onclick="location = '{{route('cart.index')}}'">
                 <i class="fas fa-shopping-cart"></i>
                 <span class="badge" name="cart-header" id="cart-header">
-                @php
-                \Cart::getContent()->count();
-                $qty = 0;
-                foreach(\Cart::getContent() as $item){
+                  @php
+                  \Cart::getContent()->count();
+                  $qty = 0;
+                  foreach(\Cart::getContent() as $item){
                   $qty += $item->quantity;
-                }
-                echo $qty;
-                @endphp (SP) <i c></i></span>
+                  }
+                  echo $qty;
+                  @endphp (SP) <i c></i></span>
               </button>
 
             </div>
