@@ -449,7 +449,15 @@ class ProductController extends BaseVoyagerBaseController
         }
 
         $displayName = count($ids) > 1 ? $dataType->getTranslatedAttribute('display_name_plural') : $dataType->getTranslatedAttribute('display_name_singular');
-
+        
+        $product_attribute = Product::find($id)->attributes()->get();
+        if($product_attribute){
+          $data = [
+            'message' => __('Không thể xóa sản phẩm này, sản phẩm chứa sản phẩm con!'),
+            'alert-type' => 'error',
+        ];
+            return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
+        }else{
         $res = $data->destroy($ids);
         $data = $res
             ? [
@@ -466,6 +474,7 @@ class ProductController extends BaseVoyagerBaseController
         }
 
         return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
+      }
     }
 
     public function restore(Request $request, $id)
