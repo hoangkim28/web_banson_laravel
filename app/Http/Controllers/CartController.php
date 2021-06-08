@@ -22,7 +22,7 @@ class CartController extends Controller
         $id = $request->id;
         $color = $request->color;
         $qty = $request->qty;
-        $product = Product::find($id)->first();
+        $product = Product::find($id);
         $unitId = $request->unit;
         $attributeValueId = $request->attibuteValue;
 
