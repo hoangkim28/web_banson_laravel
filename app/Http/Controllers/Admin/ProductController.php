@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Attribute;
 use App\Models\AttributeValue;
 use App\Models\Product;
+use App\Models\BillDetail;
+use App\Models\OrderDetail;
 use App\Models\ProductAttribute;
 use Exception;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -451,12 +453,17 @@ class ProductController extends BaseVoyagerBaseController
         $displayName = count($ids) > 1 ? $dataType->getTranslatedAttribute('display_name_plural') : $dataType->getTranslatedAttribute('display_name_singular');
         
         $product_attribute = Product::find($id)->attributes()->get();
-        if($product_attribute){
+        $product_bill = BillDetail::where('product_id','=',$id)->get();
+        $product_order = OrderDetail::where('product_id','=',$id)->get();
+
+        if($product_attribute->count() || $product_bill->count() || $product_order->count()){
+          
           $data = [
-            'message' => __('Không thể xóa sản phẩm này, sản phẩm chứa sản phẩm con!'),
+            'message' => __('Không thể xóa sản phẩm này! <hr>Sản phẩm chứa sản phẩm con hoặc tồn tại trong đơn hàng, hóa đơn!'),
             'alert-type' => 'error',
-        ];
-            return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
+          ];
+          return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
+
         }else{
         $res = $data->destroy($ids);
         $data = $res
