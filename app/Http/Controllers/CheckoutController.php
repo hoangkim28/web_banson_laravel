@@ -82,7 +82,7 @@ class CheckoutController extends Controller
         foreach (\Cart::getContent() as $item) {
             OrderDetail::create([
                 'order_id' => $order->id,
-                'product_id' => $item->id,
+                'product_id' => $item->associatedModel->id,
                 'quantity' => $item->quantity,
                 'color' => $item->attributes->color,
                 'product_price' => $this->getProductPriceByAttribute($item->attributes->idattr),
