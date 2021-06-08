@@ -22,7 +22,7 @@ class CartController extends Controller
         $id = $request->id;
         $color = $request->color;
         $qty = $request->qty;
-        $product = Product::find($id);
+        $product = Product::find($id)->first();
         $unitId = $request->unit;
         $attributeValueId = $request->attibuteValue;
 
@@ -44,14 +44,14 @@ class CartController extends Controller
             return response()->json(['msg' => "0"]);
         }else{
           Cart::add(array(
-            'id' => $unitId,
+            'id' => $attributeValueId,
             'name' => $product->name,
             'price' => $productPrice,
             'quantity' => $qty,
             'attributes' => ['color' => $color, 'unit' => $attr, 'idattr' => $unitId,'idattrvalue'=>$attributeValueId],
             'associatedModel' => $product
         ));
-          return response()->json(['msg' => Cart::getContent()]);
+          return response()->json(['msg' => "1"]);
         }
     }
 
